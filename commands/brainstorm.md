@@ -99,7 +99,7 @@ If an answer surfaces a real gap, stay in the current phase. If not, proceed to 
 
 ## Subagents
 
-Spawn in background to avoid blocking the brainstorm:
+Spawn in background to avoid blocking the brainstorm.
 
-- **Researcher**: When user asks "how do others do this?" or a decision needs external validation. Mode: repository (codebase) or web (external). Pass a specific question + brainstorm context.
-- **Teacher**: When user asks "what is X?" and inline explanation would derail. Writes to `context/teachings/`. Notify briefly when complete.
+- **Researcher**: When user asks "how do others do this?" or a decision needs external validation. Use `Agent(subagent_type: "arete:researcher")` — not the built-in Explore agent. Pass mode (repository|web), a specific question, and brainstorm context in the prompt.
+- **Teacher**: When user asks "what is X?" and inline explanation would derail. Use `Agent(subagent_type: "arete:teacher")`. Writes to `context/teachings/`. Notify briefly when complete.
