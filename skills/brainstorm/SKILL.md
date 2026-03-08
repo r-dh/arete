@@ -42,12 +42,23 @@ At every transition, show a one-line marker: `[PHASE A → PHASE B] Brief reason
 
 Example: `[GROUND → EXPLORE] Problem grounded. Exploring solutions...`
 
+## Phase Invocation
+
+**CRITICAL**: Each phase MUST be invoked by calling the Skill tool with the exact skill name. Do NOT continue inline — the phase skill must be loaded to get its full instructions.
+
+| Phase | Skill tool invocation |
+|-------|----------------------|
+| Ground | `Skill(skill: "arete:ground")` |
+| Explore | `Skill(skill: "arete:explore")` |
+| Decide | `Skill(skill: "arete:decide")` |
+| Stress | `Skill(skill: "arete:stress")` |
+| Ship | `Skill(skill: "arete:ship")` |
+
 ## Initialization
 
-1. **Invoke ground skill** - Ensure problem is understood before exploring
+1. **Call `Skill(skill: "arete:ground")`** - Ensure problem is understood before exploring
 2. **Detect track** - Technical or Conceptual (ask if unclear)
 3. **Set success criteria** - "Session ends when we have: [X]"
-4. **Invoke explore skill** - Begin exploration after grounding
 
 ## Pacing (Anti-Overwhelm)
 

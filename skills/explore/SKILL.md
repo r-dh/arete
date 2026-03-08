@@ -80,7 +80,7 @@ No max limit - continue until user signals readiness.
 **Gate**: "Any directions we haven't considered?"
 **Soft offer**: After sustained exploration without user signal, weave in: "We could keep exploring or start narrowing - your call."
 
-When criteria met → announce gate → user confirms → invoke decide skill.
+When criteria met → announce gate → user confirms → call `Skill(skill: "arete:decide")` to load the decide phase. Do NOT continue inline.
 
 ## Past Decisions
 

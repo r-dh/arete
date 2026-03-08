@@ -101,9 +101,9 @@ If stress-testing reveals fundamental gaps, loop back instead of forcing forward
 
 | Signal | Action |
 |--------|--------|
-| Missing options: "We haven't considered [X] at all" | → invoke explore skill |
-| Unclear trade-offs: "The choice between A and B isn't settled" | → invoke decide skill |
-| Problem reframing: "The real problem is actually [Y]" | → invoke ground skill |
+| Missing options: "We haven't considered [X] at all" | → call `Skill(skill: "arete:explore")` |
+| Unclear trade-offs: "The choice between A and B isn't settled" | → call `Skill(skill: "arete:decide")` |
+| Problem reframing: "The real problem is actually [Y]" | → call `Skill(skill: "arete:ground")` |
 
 Announce clearly: "This exposed a gap in [phase]. Let's loop back and address it before continuing."
 
@@ -114,4 +114,4 @@ Do NOT push through to Ship with known unresolved gaps. Looping back is a sign o
 **Saturation**: "What if..." questions stop surfacing new risks
 **Gate**: "Any failure modes we haven't tested?"
 
-When criteria met → announce gate → user confirms → invoke ship skill.
+When criteria met → announce gate → user confirms → call `Skill(skill: "arete:ship")` to load the ship phase. Do NOT continue inline.

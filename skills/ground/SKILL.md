@@ -61,7 +61,7 @@ Probe until user defines boundaries: "What's NOT in scope?" / "Smallest valuable
 When criteria met → announce:
 > "Problem: [one sentence]. Cost of inaction: [one sentence]. Key assumption: [one sentence]. Ready to explore solutions?"
 
-Then invoke explore skill.
+Then call `Skill(skill: "arete:explore")` to load the explore phase. Do NOT continue inline.
 
 ## Anti-Pattern
 

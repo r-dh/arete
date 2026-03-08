@@ -57,5 +57,5 @@ Frame the choice as a **provisional bet**, not a final commitment: "What evidenc
 **Saturation**: User stops wavering; preference is stable
 **Gate**: "Any trade-offs we haven't weighed?"
 
-When criteria met → announce gate → user confirms → invoke stress skill.
+When criteria met → announce gate → user confirms → call `Skill(skill: "arete:stress")` to load the stress phase. Do NOT continue inline.
 
