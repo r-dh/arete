@@ -9,6 +9,10 @@ description: Convergent thinking phase for brainstorming. System 2 analytical ev
 
 **System 2** | Goal: Select one clear path with full awareness of trade-offs
 
+## Light Depth
+
+When the session depth is Light, replace the steps below with a single turn: list the 2-3 options in one line each (effort, reversibility), recommend one, and state what evidence would change the call. If the user agrees, the session ends here. No Stress, no Ship, no files unless the user asks.
+
 ## Execution
 
 ### 1. Extract
@@ -59,7 +63,7 @@ Frame the choice as a **provisional bet**, not a final commitment: "What evidenc
 ## Transition
 **Coverage**: Trade-offs explicitly weighed for selected option
 **Saturation**: User stops wavering; preference is stable
-**Gate**: "Any trade-offs we haven't weighed?"
+**Gate** (Full only): "Any trade-offs we haven't weighed?"
 
 When criteria met → announce gate → user confirms → call `Skill(skill: "arete:stress")` to load the stress phase. Do NOT continue inline.
 

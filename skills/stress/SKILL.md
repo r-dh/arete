@@ -18,7 +18,9 @@ description: Stress-test phase for brainstorming. System 2 evaluation with full 
 3. State the track and domain conversationally (ask if unclear)
 4. Begin stress-test flow
 
-## Reference Loading (Hard Gate)
+## Reference Loading (Hard Gate at Full depth)
+
+At Standard depth, domain reference files are optional. At Full depth:
 
 **STOP.** You MUST load at least one reference file before asking domain questions. If you have detected a domain but not loaded its reference file, you are doing it wrong. Load the reference file NOW before proceeding.
 
@@ -130,7 +132,7 @@ Do NOT push through to Ship with known unresolved gaps. Looping back is a sign o
 ## Transition
 **Coverage**: Key failure modes probed
 **Saturation**: "What if..." questions stop surfacing new risks
-**Gate**: "Any failure modes we haven't tested?"
+**Gate** (Full only): "Any failure modes we haven't tested?"
 **AC Checkpoint** (Technical track only): the AC checkpoint must pass before transition — every confirmed AC must be testable. This is a hard precondition.
 
 When criteria met → announce gate → user confirms → call `Skill(skill: "arete:ship")` to load the ship phase. Do NOT continue inline.

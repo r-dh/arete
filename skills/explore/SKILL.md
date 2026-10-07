@@ -17,7 +17,9 @@ description: Divergent thinking phase for brainstorming. System 1 exploration wi
 2. State detection conversationally (ask if unclear)
 3. Ask framework questions → domain questions → build on keywords
 
-## Reference Loading (Hard Gate)
+## Reference Loading (Hard Gate at Full depth)
+
+At Standard depth, load a reference file only if the domain is unfamiliar territory for the user. At Full depth:
 
 **STOP.** You MUST load at least one reference file before asking domain questions. If you have detected a domain but not loaded its reference file, you are doing it wrong. Load the reference file NOW before proceeding.
 
@@ -83,7 +85,7 @@ No max limit - continue until user signals readiness.
 **Coverage**: Multiple distinct approaches surfaced
 **Saturation**: New questions yield familiar directions
 **Orient**: Before transitioning, surface one contextual factor that might shape the decision: "Given your team size / org culture / timeline — does that change which of these directions feels most promising?" (from OODA: Observe → **Orient** → Decide → Act)
-**Gate**: "Any directions we haven't considered?"
+**Gate** (Full only): "Any directions we haven't considered?"
 **Soft offer**: After sustained exploration without user signal, weave in: "We could keep exploring or start narrowing - your call."
 
 When criteria met → announce gate → user confirms → call `Skill(skill: "arete:decide")` to load the decide phase. Do NOT continue inline.

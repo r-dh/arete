@@ -9,6 +9,18 @@ Transform brainstorm decisions into retrievable artifacts that serve as **bounda
 
 On the Technical track, SHIP produces **three artifacts** that together cover *why* (ADR), *what's true when done* (Spec), and *how* (Plan). The Spec is the testable definition of done; the Plan tasks reference Spec acceptance criteria via `Satisfies: AC-N`.
 
+## Standard Depth
+
+At Standard depth (technical track), write **one file**: the Plan, with an `## Acceptance Criteria` section above `## Tasks` using the Spec's AC format (a bold `**AC-N` heading line plus `*Verifiable by*:`). Skip the ADR, the Spec and diagrams. Run the coverage check with the Plan as both arguments:
+
+```bash
+bash scripts/check-ac-coverage.sh context/plans/[slug]-plan-YYYY-MM-DD.md context/plans/[slug]-plan-YYYY-MM-DD.md
+```
+
+Conceptual track at Standard depth: write the Outline as usual, without diagrams.
+
+The Flow below is for Full depth.
+
 ## Flow
 
 1. Detect track: Technical → **ADR + Spec + Plan** (three artifacts) | Conceptual → Outline

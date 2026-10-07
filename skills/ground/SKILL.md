@@ -49,10 +49,18 @@ Surface one key assumption hiding in the problem statement. Don't ask "what are 
 
 One assumption is enough. Pick the riskiest one.
 
-### 6. Scope
+### 6. Depth
+
+Propose a depth from what you now know (see the Depth table in the brainstorm skill) and confirm it in one turn. Base it on two things: how expensive undoing a wrong choice would be, and who else it affects.
+
+- "If we picked wrong, undoing it is [a revert / a migration / a cross-team rollback]. That points to **[Light|Standard|Full]**. Agree?"
+
+Then announce the success criteria for that depth. At **Light**, stop here: skip Scope and Success, announce the problem and assumption, and call `Skill(skill: "arete:decide")`.
+
+### 7. Scope
 Probe until user defines boundaries: "What's NOT in scope?" / "Smallest valuable version?"
 
-### 7. Success (User Requirements)
+### 8. Success (User Requirements)
 
 Probe until the user names *who* the work serves and *what they need to do* after. This is the **user requirements** thread that the Spec will assemble at SHIP. Apply the same primitive used for vague pain — refuse abstractions ("make it better," "improve UX," "be more reliable") and demand concrete user-facing outcomes.
 
@@ -64,9 +72,9 @@ The user need not produce final acceptance criteria here — those sharpen in St
 
 ## Transition
 
-**Coverage**: Trigger, Pain, Stakes, Assumptions, Scope, **and Success (user requirements)** answered with specifics
+**Coverage**: Trigger, Pain, Stakes, Assumptions, Depth, Scope, **and Success (user requirements)** answered with specifics
 **Saturation**: User repeats same pain points; no new dimensions emerging
-**Gate**: "Any pain points we haven't touched?"
+**Gate** (Full only): "Any pain points we haven't touched?"
 
 When criteria met → announce:
 > "Problem: [one sentence]. Cost of inaction: [one sentence]. Key assumption: [one sentence]. **User requirements: [one sentence — who, what they need to do].** Ready to explore solutions?"

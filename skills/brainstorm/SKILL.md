@@ -36,6 +36,20 @@ Each phase is a skill. Phase transitions happen when:
 
 Stress can loop back to Explore, Decide, or Ground if gaps are found. This is a sign of rigor, not failure.
 
+## Depth
+
+Ground picks a depth once stakes and the riskiest assumption are known. Depth scales the ceremony to what a wrong decision would cost.
+
+| Depth | When | Phases | Output |
+|-------|------|--------|--------|
+| **Light** | Cheap to undo (days), small blast radius | Ground (through Assumptions) → Decide (one turn) | Decision stated in chat; no files unless asked |
+| **Standard** | Costly to undo, one team affected | Ground → Explore → Decide → Stress → Ship | Technical: one Plan with inline AC. Conceptual: Outline |
+| **Full** | Costly to undo, crosses teams or hard to reverse | Ground → Explore → Decide → Stress → Ship | Technical: ADR + Spec + Plan. Conceptual: Outline |
+
+At Standard, domain reference files are optional and gate questions ("Any X we haven't considered?") are skipped once answers start repeating. At Full, every rule in the phase skills applies.
+
+If a phase skill is invoked directly and no depth was set, treat it as **Full**. The user can change depth at any time ("go deeper", "keep this light").
+
 ## Phase Transitions
 
 At every transition, show a one-line marker: `[PHASE A → PHASE B] Brief reason.`
@@ -58,9 +72,11 @@ Example: `[GROUND → EXPLORE] Problem grounded. Exploring solutions...`
 
 1. **Call `Skill(skill: "arete:ground")`** - Ensure problem is understood before exploring
 2. **Detect track** - Technical or Conceptual (ask if unclear)
-3. **Set success criteria**:
-   - **Technical**: "Session ends when SHIP produces three artifacts — ADR (the why and what), Spec (the testable definition of done), and Plan (the how) — with every Spec acceptance criterion covered by at least one Plan task carrying an executable `Verify:` command."
-   - **Conceptual**: "Session ends when SHIP produces an Outline ready to drive a talk, blog post, or stakeholder conversation."
+3. **Set success criteria after Ground picks the depth**, not before. Announce the one that applies:
+   - **Light**: "Session ends with a decision and the evidence that would reverse it."
+   - **Standard, technical**: "Session ends with a Plan whose acceptance criteria are each covered by a task with an executable `Verify:` command."
+   - **Full, technical**: "Session ends when SHIP produces three artifacts — ADR (the why and what), Spec (the testable definition of done), and Plan (the how) — with every Spec acceptance criterion covered by at least one Plan task carrying an executable `Verify:` command."
+   - **Standard or Full, conceptual**: "Session ends when SHIP produces an Outline ready to drive a talk, blog post, or stakeholder conversation."
 
 ## Pacing (Anti-Overwhelm)
 
