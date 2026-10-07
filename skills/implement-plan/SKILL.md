@@ -38,6 +38,7 @@ Extract from each task section:
 - **Verify**: Lines starting with `**Verify:**`
 - **Expect**: Lines starting with `**Expect:**`
 - **Depends on**: Lines starting with `**Depends on:**`
+- **Satisfies**: Lines starting with `**Satisfies:**` (Spec AC IDs)
 
 ### Task Creation
 
@@ -59,6 +60,7 @@ TaskCreate:
 TaskCreate:
   subject: "V{N}: Verify {task title}"
   description: |
+    **Satisfies:** {AC IDs, omit line if none}
     **Verify:** {verify content}
     **Expect:** {expect content}
   activeForm: "Verifying {short title}"
@@ -88,7 +90,7 @@ Created {X} tasks from plan:
 
 Implementation:
 - T1: {subject} (pending)
-- T2: {subject} (pending, blocked by V1)
+- T2: {subject} (pending)
 ...
 
 Verification:
@@ -105,21 +107,22 @@ Given plan with:
 ```markdown
 ### Task 1: Deploy Network
 **Files:** `infra/network.tf`
-**Verify:** Network exists and is accessible
-**Expect:** `terraform output network_id` returns valid ID
+**Verify:** `terraform output network_id`
+**Expect:** Returns a valid network ID
 
 ### Task 2: Deploy App
 **Files:** `infra/app.tf`
-**Verify:** App can reach network
-**Expect:** `curl -s http://app/health` returns 200
+**Satisfies:** AC-1
+**Verify:** `curl -s -o /dev/null -w '%{http_code}' http://app/health`
+**Expect:** `200`
 **Depends on:** Task 1
 ```
 
 Creates:
 - T1: Deploy Network
 - V1: Verify Deploy Network (blocked by T1)
-- T2: Deploy App (blocked by V1)
-- V2: Verify Deploy App (blocked by T2, V1)
+- T2: Deploy App
+- V2: Verify Deploy App, satisfies AC-1 (blocked by T2, V1)
 
 ## Notes
 
