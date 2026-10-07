@@ -14,8 +14,8 @@ description: Stress-test phase for brainstorming. System 2 evaluation with full 
 ## Initialization
 
 1. Verify user has a selected direction from decide phase
-2. Detect track from keywords → load `references/{track}/{domain}.md`
-3. State detection conversationally (ask if unclear)
+2. Reuse the track and domain from Explore → load `references/{track}/{domain}.md`. Only detect from keywords (below) when Stress is invoked directly.
+3. State the track and domain conversationally (ask if unclear)
 4. Begin stress-test flow
 
 ## Reference Loading (Hard Gate)
@@ -83,7 +83,7 @@ Stress is where rough user requirements from Ground sharpen into **testable acce
 
 **Trip-wire — when to stop probing:** an AC is good enough when **a `Verify:` command could be written against it**. Same testability primitive Ship enforces at the Plan level. Don't keep probing past testability — diminishing returns and brainstorm fatigue.
 
-If you've probed an AC twice and it's still vague, flag it as rough and carry it into the AC checkpoint (step 7), which is the gate that resolves it. Don't spiral here.
+If you've probed an AC twice and it's still vague, flag it as rough and carry it into the AC checkpoint (step 6), which is the gate that resolves it. Don't spiral here.
 
 ### 5. Polish Loop
 Push for simpler, more robust, more elegant. When all pass: "Production-ready."

@@ -52,7 +52,7 @@ Ask the user which sub-problem to tackle first. Continue the current session on 
 
 ### 5. Reference Prior Decisions
 
-In later sessions, reference prior session outputs from `context/exports/` for decisions that carry forward. This is how sub-sessions compose into a coherent whole.
+In later sessions, reference prior session outputs from `context/designs/`, `context/specs/`, `context/plans/` (technical) or `context/exports/` (conceptual) for decisions that carry forward. This is how sub-sessions compose into a coherent whole.
 
 ## Response Style
 
