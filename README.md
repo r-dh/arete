@@ -45,6 +45,18 @@ If you walk in with prior research and a clear idea, you don't have to start fro
 
 But only if you know what you're doing. The exit criteria exist because most "problems" don't survive Ground. Skip the phases that already cleared their criteria in your head. Don't skip the ones that didn't.
 
+### Depth
+
+Not every decision deserves five phases. Once Ground knows the stakes, it proposes a depth based on how expensive a wrong choice is to undo:
+
+| Depth | Phases | Output |
+|-------|--------|--------|
+| Light (cheap to undo) | Ground, then one Decide turn | A decision in chat |
+| Standard (costly, one team) | All five, lighter gates | One Plan with inline acceptance criteria |
+| Full (hard to reverse, cross-team) | All five | ADR + Spec + Plan |
+
+Say "go deeper" or "keep this light" to change it mid-session.
+
 ## Output
 
 On the technical track, three artifacts that cross-reference each other:
