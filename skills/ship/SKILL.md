@@ -15,7 +15,7 @@ On the Technical track, SHIP produces **three artifacts** that together cover *w
 2. Ensure output directories exist: `mkdir -p context/designs context/specs context/plans` (Technical) or `mkdir -p context/exports` (Conceptual)
 3. Detect domain: IaC → load [`references/tdd-iac.md`](references/tdd-iac.md)
 4. Generate documents from brainstorm content (see per-track sections below)
-5. **Technical track only**: enforce AC ↔ Verify asymmetric coverage (see `## AC Coverage Enforcement` below) — block save until every AC is covered
+5. **Technical track only**: write Spec + Plan, then run `scripts/check-ac-coverage.sh` until it exits 0 (see `## AC Coverage Enforcement` below)
 6. Identify sections with component interactions → spawn parallel architect subagents
 7. Inject returned mermaid inline (max 3 diagrams per doc)
 8. Add frontmatter (`problem:`, `date:`, cross-references) and save
@@ -88,11 +88,17 @@ Each implementation task MUST include verification:
 
 ## AC Coverage Enforcement (Technical Track)
 
-After generating the Plan, run the **asymmetric coverage check** before saving:
+After generating the Plan, write the Spec and Plan to disk and run the **asymmetric coverage check**:
+
+```bash
+bash scripts/check-ac-coverage.sh context/specs/[slug]-spec-YYYY-MM-DD.md context/plans/[slug]-plan-YYYY-MM-DD.md
+```
+
+The script path is relative to this skill's directory. Exit 0 means every AC is covered; any `MISS` line is a gap. The script checks structure only; you still judge whether each `Verify:` actually exercises its AC.
 
 - For **every** AC in the Spec, confirm at least one Plan task carries `**Satisfies:** AC-N` AND that task's `**Verify:**` line is an executable command (or a clearly-marked `[manual]` fallback). This is the AC → tasks direction.
 - Tasks **without** `Satisfies:` are allowed (scaffolding, refactors, observability). The reverse direction is intentionally not enforced — that's the asymmetry.
-- If any AC has no covering task, **surface the gap** to the user. Three resolutions: (a) add a task that satisfies it, (b) mark the AC as deferred (move to a follow-up section in the Spec), or (c) remove the AC from the Spec. Do not save the artifacts until the gap is resolved.
+- If any AC has no covering task, **surface the gap** to the user. Three resolutions: (a) add a task that satisfies it, (b) mark the AC as deferred (move it under a `## Deferred` heading at the end of the Spec), or (c) remove the AC from the Spec. Re-run the script after each fix. Do not finish SHIP until it exits 0.
 
 The asymmetry guards against *structural compliance ≠ semantic coverage*: stamping `Satisfies: AC-3` on a task whose `Verify:` doesn't actually exercise AC-3. Requiring an executable `Verify:` on the satisfying task is what makes AC IDs carriers of testability rather than theater.
 

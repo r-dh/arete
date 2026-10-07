@@ -64,7 +64,7 @@ The work is complete when **AC-1 through AC-N** all pass, verified end-to-end vi
 
 **AC-4 — AC coverage in Plan (asymmetric)**
 Every AC ID referenced in the Spec is referenced by at least one Plan task via `Satisfies: AC-N`.
-*Verifiable by*: for each AC-N in Spec, `grep "Satisfies:.*AC-N" [plan-file]` returns ≥ 1 match.
+*Verifiable by*: `bash skills/ship/scripts/check-ac-coverage.sh [spec-file] [plan-file]` exits 0.
 ```
 
 The corresponding Plan task references this AC directly:
@@ -73,8 +73,8 @@ The corresponding Plan task references this AC directly:
 ### Task 9: Implement AC ↔ Verify enforcement in Ship
 ...
 **Satisfies:** AC-4, AC-5
-**Verify:** grep -E "asymmetric coverage|every AC" skills/ship/SKILL.md
-**Expect:** Enforcement step is documented.
+**Verify:** `bash skills/ship/scripts/check-ac-coverage.sh fixtures/missing-ac-spec.md fixtures/plan.md`
+**Expect:** Exits 1 and prints `MISS  AC-2`.
 ```
 
 ## Naming Convention
@@ -86,6 +86,7 @@ The corresponding Plan task references this AC directly:
 ## Notes
 
 - **AC IDs are stable.** Once assigned, they persist for the life of the spec and any future supersedence. New AC are added at the end (AC-N+1).
+- **Deferred AC** move under a `## Deferred` heading at the end of the Spec. The coverage script ignores everything below it.
 - **AC must be testable.** A `Verifiable by` line that cannot be expressed as a command or precise manual check is a sign the AC is too vague. Probe it during Stress until it sharpens.
 - **AC carry testability into the Plan.** SHIP enforces that every AC referenced in the Spec is covered by ≥ 1 Plan task whose `Verify:` is executable (asymmetric coverage rule — see `Plan.md`).
 - **Spec ≠ ADR.** The ADR captures *why* and *what* (architecture, trade-offs, consequences). The Spec captures *what's true when done* (criteria, not reasoning). When in doubt: would two engineers agree this is testable? → Spec. Would two engineers want to know the rationale? → ADR.
